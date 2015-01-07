@@ -46,13 +46,11 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
-
 body {
   width: 90%;
   margin: auto;
   text-align: center;
 }
-
 
 .header {
   margin: 10px auto;
@@ -62,45 +60,45 @@ body {
 }
 .footer {
   clear: both;
-  font-size: 10px;
   margin: 10px auto;
   padding: 10px 0;
   border-radius: 8px;
-
+  font-size: 10px;
 }
-
 .content {
-  font-size: 14px;
   float: left;
   width: calc(60% - 20px);
+  font-size: 14px;
 }
-
 .navigation {
-  font-size:12px;
   float: left;
   width: 20%;
-  border-radius: 8px;
-  margin: 10px 10px 10px 0;
   height: 215px;
+  margin: 10px 10px 10px 0;
+  border-radius: 8px;
+  font-size:12px;
 }
 .sidebar {
-  font-size: 10px;
   float: left;
   width: 20%;
-  border-radius: 8px;
-  margin: 10px 0 10px 10px;
   height: 215px;
-}
-
-.article {
+  margin: 10px 0 10px 10px;
   border-radius: 8px;
-  min-height: 100px;
+  font-size: 10px;
 }
-
+.article {
+  min-height: 100px;
+  border-radius: 8px;
+}
+.fancy-border {
+  border: solid blue 2px;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
 [class$="r"] {
   background-color: magenta;
 }
-
 [class*="a"]:not([class$="r"]) {
   background-color: blue;
   color: white;
