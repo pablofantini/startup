@@ -46,10 +46,19 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+
+* {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+html {
+  font-size: 14px;
+  font-family: monospace;
+}
 body {
   width: 90%;
   margin: auto;
-  text-align: center;
 }
 
 .header {
@@ -57,6 +66,7 @@ body {
   padding: 10px 0;
   border-radius: 8px;
   font-size: 46px;
+  text-align: center;
 }
 .footer {
   clear: both;
@@ -64,6 +74,7 @@ body {
   padding: 10px 0;
   border-radius: 8px;
   font-size: 10px;
+  text-align: center;
 }
 .content {
   float: left;
@@ -75,6 +86,7 @@ body {
   width: 20%;
   height: 215px;
   margin: 10px 10px 10px 0;
+  padding: 10px;
   border-radius: 8px;
   font-size:12px;
 }
@@ -83,19 +95,21 @@ body {
   width: 20%;
   height: 215px;
   margin: 10px 0 10px 10px;
+  padding: 10px;
   border-radius: 8px;
   font-size: 10px;
 }
 .article {
   min-height: 100px;
+  padding: 10px;
   border-radius: 8px;
 }
 .fancy-border {
   border: solid blue 2px;
   box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
 }
+
+
 [class$="r"] {
   background-color: magenta;
 }
