@@ -30,6 +30,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
   line-height: 1;
+
 }
 ol, ul {
   list-style: none;
@@ -49,6 +50,10 @@ table {
 
 
 
+#search-result {
+  margin: auto;
+}
+
 section {
   text-align: center;
 }
@@ -61,3 +66,52 @@ section {
   color: blue;
   background-color: yellow;
 }
+
+article {
+  width: 500px;
+  margin: 30px auto;
+  padding: 10px;
+  position: relative;
+  box-shadow: 3px 3px 5px 2px #ccc;
+  -moz-box-shadow: 3px 3px 5px 2px #ccc;
+  -webkit-box-shadow: 3px 3px 5px 2px #ccc;
+}
+article .album {
+  font-size: 30px;
+  color: #000;
+}
+
+article .artist {
+  font-size: 18px;
+  color: #777;
+}
+
+article .link {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+}
+article .link a {
+  color: #9B7173
+}
+article .image {
+  margin: 8px auto;
+  text-align: center;
+}
+
+/* smartphones, iPhone, portrait 480x320 phones */
+@media (min-width:320px) {
+  article {
+    width: 100%;
+    margin: 20px auto;
+  }
+  
+  article .album {
+    font-size: 25px;
+  }
+
+  article .artist {
+    font-size: 15px;
+  }
+}
+
