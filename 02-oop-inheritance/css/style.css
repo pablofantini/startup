@@ -1,0 +1,117 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+v2.0 | 20110126
+License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  line-height: 1;
+
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+
+
+#search-result {
+  margin: auto;
+}
+
+section {
+  text-align: center;
+}
+
+.message {
+  display: none;
+}
+
+.higlight {
+  color: blue;
+  background-color: yellow;
+}
+
+article {
+  width: 500px;
+  margin: 30px auto;
+  padding: 10px;
+  position: relative;
+  box-shadow: 3px 3px 5px 2px #ccc;
+  -moz-box-shadow: 3px 3px 5px 2px #ccc;
+  -webkit-box-shadow: 3px 3px 5px 2px #ccc;
+}
+article .album {
+  font-size: 30px;
+  color: #000;
+}
+
+article .artist {
+  font-size: 18px;
+  color: #777;
+}
+
+article .link {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+}
+article .link a {
+  color: #9B7173
+}
+article .image {
+  margin: 8px auto;
+  text-align: center;
+}
+
+/* smartphones, iPhone, portrait 480x320 phones */
+@media (min-width:320px) {
+  article {
+    width: 100%;
+    margin: 20px auto;
+  }
+  
+  article .album {
+    font-size: 25px;
+  }
+
+  article .artist {
+    font-size: 15px;
+  }
+}
+
