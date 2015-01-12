@@ -1,0 +1,19 @@
+{
+  "name": "03-Node-npm-modules",
+  "version": "1.0.0",
+  "description": "Practice 3",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Nodejs",
+    "npm",
+    "javascript",
+    "modules",
+    "practice",
+    "3"
+  ],
+  "author": "Pablo Fantini",
+  "license": "ISC"
+}
