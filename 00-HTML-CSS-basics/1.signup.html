@@ -17,25 +17,43 @@
   <form action="">
     <table>
       <tr>
-        <td>First name:</td>
-        <td><input type="text" name="first-name" required></td>
-      </tr>
-      <tr>
-        <td>Last name:</td>
-        <td><input type="text" name="last-name" required></td>
-      </tr>
-      <tr>
-        <td>Email:</td>
-        <td><input type="email" name="email" required></td>
-      </tr>
-      <tr>
-        <td>Birthday:</td>
-        <td><input type="date" name="birthday"></td>
-      </tr>
-      <tr>
-        <td>Favorite sport:</td>
         <td>
-          <select>
+          <label for="first-name">First name:</label>
+        </td>
+        <td>
+          <input type="text" id="first-name" name="first-name" required>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="last-name">Last name:</label>
+        </td>
+        <td>
+          <input type="text" id="last-name" name="last-name" required>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="email">Email:</label>
+        </td>
+        <td>
+          <input type="email" id="email" name="email" required>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="birthday">Birthday:</label>
+        </td>
+        <td>
+          <input type="date" id="birthday" name="birthday">
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <label for="sport">Favorite sport:</label>
+        </td>
+        <td>
+          <select id="sport">
             <option disabled selected>select option</option>
             <option value="0">waterpolo</option>
             <option value="1" >basketball</option>

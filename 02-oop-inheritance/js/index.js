@@ -15,8 +15,7 @@ console.log('Play and stop movie');
 terminator.play();
 terminator.stop();
 
-console.log("----------------------------------");
-
+console.log('----------------------------------');
 console.log('remove listener "Peter"');
 terminator.removeObserver(listenerViewer2);
 
@@ -24,7 +23,13 @@ console.log('Play and stop movie again');
 terminator.play();
 terminator.stop();
 
-console.log("----------------------------------");
+console.log('----------------------------------');
+console.log('make download movie')
+var ironman1 = new DownloadableMovie();
+ironman1.set('title', 'Iron Man 1');
+ironman1.download();
+
+console.log('----------------------------------');
 
 var ironman2 = new Movie();
 ironman2.set('title', 'Iron Man 2');
@@ -34,7 +39,7 @@ _.extend(Movie.prototype, Shared.prototype);
 ironman2.share('V. Rivas');
 ironman2.like();
 
-console.log("----------------------------------");
+console.log('----------------------------------');
 console.log('Add actors to ironman movie');
 
 var robert = new Actor('Robert', 'Downew Js', 33);

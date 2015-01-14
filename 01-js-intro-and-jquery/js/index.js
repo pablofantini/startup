@@ -17,11 +17,11 @@ $(document).ready(function () {
   function highlightName(name) {
     return '<span class="higlight">' + name + '</span>';
   }
-  
+
   /**
    * Format server infromation
-   * @param {json} albumObj albun information object form server
-   * @return {string} html from albun information
+   * @param {json} albumObj album information object form server
+   * @return {string} html from album information
    */
   function makeAlbumShowData(albumObj) {
     var result =
@@ -45,23 +45,19 @@ $(document).ready(function () {
   function getResponse(name, success, error) {
     $.ajax({
       url: constants.URL_SERVER_HELLOW_NAME + name,
-      dataType: 'json',
-      success: function (data) {
-        if (data.response) {
-          success(data.response);
-        } else {
-          error();
-        }
-      },
-      error: function () {
+      dataType: 'json'
+    }).done(function (data) {
+      if (data.response) {
+        success(data.response);
+      } else {
         error();
       }
-    });
+    }).error(error);
   }
 
   /**
    * Show album information form last.fm
-   * @param {string} query albun to search
+   * @param {string} query album to search
    * @param {function} success calback funtion on success
    * @param {function} error calback funtion on error
    */
@@ -74,61 +70,59 @@ $(document).ready(function () {
         method: 'album.search',
         album: query,
         api_key: constants.LAST_FM_API_KEY
-      },
-      success: function (data) {
-        if (data.results) {
-          if (data.results['opensearch:totalResults'] > 0) {
-            success(data.results.albummatches);
-          }else{
-            error();
-          }
-        }else{
-          error(); 
-        }
-      },
-      error: function () {
-        error(); 
       }
-    });
+    }).done(function (data) {
+      if (data.results) {
+        if (data.results['opensearch:totalResults'] > 0) {
+          success(data.results.albummatches);
+        } else {
+          error();
+        }
+      } else {
+        error();
+      }
+    }).error(error);
   }
-  
+
   /**
    * Show welcome message event
    */
-  function showMessageEvent(){
+  function showMessageEvent() {
     var name = $('#alias').val()
     var $container = $('.message');
     $container.html('wait...');
-    
+
     getResponse(name, function (response) {
       $container.html(response.replace(name, highlightName(name)));
     }, function () {
-      $container.html('Error!!!').css('color', 'red');
+      $container
+        .html('Error!!!')
+        .css('color', 'red');
     });
   }
-  
+
   /**
    * Search album event
    */
-  function albunSearchEvent(){
-    var $container = $('#search-result')
+  function albumSearchEvent() {
+    var $container = $('#search-result'),
+      $results = $('<div>');
     $container.html('wait...');
-    
-    showLastFmInfo($('#query').val(), function(result){
-      $container.html('');
-      $.each(result.album, function (index, value) {
-        $('#search-result').append($('<article>', {
-          html: makeAlbumShowData(value)
+    showLastFmInfo($('#query').val(), function (result) {
+      for (var i in result.album) {
+        $results.append($('<article>', {
+          html: makeAlbumShowData(result.album[i])
         }))
-      });
-    },function(){
-      $('#search-result').html('No results');
+      }
+      $container.html($results);
+    }, function () {
+      $container.html('No results');
     });
   }
 
 
   /* START APPLICATION */
-  
+
   $('.message').fadeIn(function () {
     $('.alias').focus();
   });
@@ -137,9 +131,9 @@ $(document).ready(function () {
   $('#get-response').click(function () {
     showMessageEvent();
   });
-  
+
   // input event
-  $('#alias').keypress(function(e) {
+  $('#alias').keypress(function (e) {
     if (e.keyCode === 13) {
       showMessageEvent();
     }
@@ -147,14 +141,14 @@ $(document).ready(function () {
 
   // Button show albums information action
   $('#search-album').click(function () {
-    albunSearchEvent();
+    albumSearchEvent();
   });
-  
+
   // input event
-  $('#query').keypress(function(e) {
+  $('#query').keypress(function (e) {
     if (e.keyCode === 13) {
-      albunSearchEvent();
+      albumSearchEvent();
     }
   });
-  
+
 });
