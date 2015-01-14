@@ -2,46 +2,47 @@
 /**
  * Director module
  */
-module.exports = function (name) {
+module.exports = (function (name) {
   var attributes = {};
   attributes.name = name;
+  
   /* Public functions */
+  return function () {
+    /**
+     * Set attribute
+     * @param {String} attr
+     * @param {Object} value
+     */
+    this.set = function (attr, value) {
+      attributes[attr] = value;
+    }
 
+    /**
+     * Get attribute
+     * @param {String} attr
+     * @return {Object} attribute value
+     */
+    this.get = function (attr) {
+      return attributes[attr];
+    }
 
-  /**
-   * Set attribute
-   * @param {String} attr
-   * @param {Object} value
-   */
-  this.set = function (attr, value) {
-    attributes[attr] = value;
+    /**
+     * Director speak
+     * @return {String} director quotes
+     */
+    this.speak = function () {
+      var quotes = this.get('quotes') === 'object' ? this.get('quotes').join(' and ') : this.get('quotes');
+      var say = attributes.name + ' say: ' + quotes;
+      console.log(say);
+      return say;
+    }
   }
-
-  /**
-   * Get attribute
-   * @param {String} attr
-   * @return {Object} attribute value
-   */
-  this.get = function (attr) {
-    return attributes[attr];
-  }
-
-  /**
-   * Director speak
-   * @return {String} director quotes
-   */
-  this.speak = function () {
-    var quotes = this.get('quotes') === 'object' ? this.get('quotes').join(' and ') : this.get('quotes');
-    var say = attributes.name + ' say: ' + quotes;
-    console.log(say);
-    return say;
-  }
-}
+})();
 },{}],2:[function(require,module,exports){
 /**
  * Movie module
  */
-module.exports = function () {
+module.exports = (function () {
   /**
    * Atributes
    */
@@ -51,74 +52,75 @@ module.exports = function () {
 
 
   /* Public functions */
+  return function () {
+    /**
+     * Get attribute
+     * @param {String} attr
+     */
+    this.get = function (attr) {
+      return attributes[attr];
+    }
 
-  /**
-   * Get attribute
-   * @param {String} attr
-   */
-  this.get = function (attr) {
-    return attributes[attr];
-  }
+    /**
+     * Set attribute
+     * @param {String} attr
+     * @param {Object} value
+     */
+    this.set = function (attr, value) {
+      attributes[attr] = value;
+    }
 
-  /**
-   * Set attribute
-   * @param {String} attr
-   * @param {Object} value
-   */
-  this.set = function (attr, value) {
-    attributes[attr] = value;
-  }
+    /**
+     * Play movie
+     */
+    this.play = function () {
+      if (this.get('title')) {
+        this.nofity('playing');
+        isPlay = true;
+      } else {
+        console.error('Not config movie');
+      }
+    }
 
-  /**
-   * Play movie
-   */
-  this.play = function () {
-    if (this.get('title')) {
-      this.nofity('playing');
-      isPlay = true;
-    } else {
-      console.error('Not config movie');
+    /**
+     * Stop movie
+     */
+    this.stop = function () {
+      if (isPlay) {
+        this.nofity('stopped');
+        isPlay = false;
+      } else {
+        console.error('Not playing movie');
+      }
+    }
+
+    /**
+     * Add observer object
+     * @param {MovieObserver} observer
+     */
+    this.addObserver = function (observer) {
+      return observers.push(observer);
+    }
+
+    /**
+     * Remove observer
+     * @param {int} index
+     */
+    this.removeObserver = function (index) {
+      observers.splice(index, 1);
+    }
+
+    /**
+     * Notify observers
+     * @param {String} context
+     */
+    this.nofity = function (context) {
+      for (var i in observers) {
+        observers[i].update(context, this);
+      }
     }
   }
-
-  /**
-   * Stop movie
-   */
-  this.stop = function () {
-    if (isPlay) {
-      this.nofity('stopped');
-      isPlay = false;
-    } else {
-      console.error('Not playing movie');
-    }
-  }
-
-  /**
-   * Add observer object
-   * @param {MovieObserver} observer
-   */
-  this.addObserver = function (observer) {
-    return observers.push(observer);
-  }
-
-  /**
-   * Remove observer
-   * @param {int} index
-   */
-  this.removeObserver = function (index) {
-    observers.splice(index, 1);
-  }
-
-  /**
-   * Notify observers
-   * @param {String} context
-   */
-  this.nofity = function (context) {
-    for (var i in observers) {
-      observers[i].update(context, this);
-    }
-  }
-}
+})();
 },{}],3:[function(require,module,exports){
 // jQuery module
 var $ = require('jquery');
@@ -135,10 +137,12 @@ ridleyScott.set('quotes', ['Cast is everything.', 'Do what ...']);
 alien.set('director', ridleyScott);
 var directorSpeak = alien.get('director').speak();
 
+// show director speak in html
+/*
 $( document ).ready(function() {
-    $('html').find('#speak').append(directorSpeak);
+    $('#speak').html(directorSpeak);
 });
-
+*/
 },{"./Director.js":1,"./Movie.js":2,"jquery":4}],4:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.1.3

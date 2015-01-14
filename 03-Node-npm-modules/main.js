@@ -14,6 +14,8 @@ alien.set('director', ridleyScott);
 var directorSpeak = alien.get('director').speak();
 
 // show director speak in html
+/*
 $( document ).ready(function() {
     $('#speak').html(directorSpeak);
 });
+*/
