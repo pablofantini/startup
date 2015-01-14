@@ -34,7 +34,10 @@ console.log('----------------------------------');
 var ironman2 = new Movie();
 ironman2.set('title', 'Iron Man 2');
 
-_.extend(Movie.prototype, Shared.prototype);
+// mixin objects
+for(var i in Shared.prototype){
+  Movie.prototype[i] = Shared.prototype[i];
+}
 
 ironman2.share('V. Rivas');
 ironman2.like();
