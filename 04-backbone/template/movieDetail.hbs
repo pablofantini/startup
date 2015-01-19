@@ -1,0 +1,41 @@
+
+<article>
+  <div class="action">
+    <i class="glyphicon glyphicon-pencil"></i>
+    <a href="#movie/{{cid}}/edit">Edit</a>
+    <samp>|</samp>
+    <a href="#movie/{{cid}}/delete">Delete</a>
+  </div>
+  <div class="image">
+    <img title="{{movie.name}}" src="{{movie.image}}">
+  </div>
+  <div class="plot">
+    <img title="{{movie.name}}" src="{{movie.plot}}">
+  </div>
+
+  <div class="title margin-text">
+    {{movie.name}}
+  </div>
+  <div class="year margin-text">
+    Year: <strong>{{movie.year}}</strong>
+  </div>
+  <div class="genre margin-text">
+    Gener: <strong>{{movie.gener}}</strong>
+  </div>
+  <div class="raking margin-text">
+    Ranking: <strong>{{movie.raking}}</strong>
+  </div>
+  <div class="director margin-text">
+    Director: <strong>{{movie.director.firstName}} {{movie.director.lastName}}</strong>
+  </div>
+  <div class="margin-group">
+    <h3 class="page-header">Actors</h3>
+    <ul class="actors">
+      {{#each movie.actors}}
+        <li class="item">{{firstName}} {{lastName}}</li>
+      {{/each}}
+    </ul>
+    <h3 class="page-header">Description</h3>
+    <div class="description">{{movie.description}}</div>
+  </div>
+</article>
