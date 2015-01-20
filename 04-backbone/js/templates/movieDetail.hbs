@@ -1,10 +1,13 @@
 
+<a href="#movies" type="button" class="btn btn-default back-button">
+  <i class="glyphicon glyphicon-chevron-left"></i> Go to list
+</a>
 <article>
   <div class="action">
     <i class="glyphicon glyphicon-pencil"></i>
     <a href="#movie/{{cid}}/edit">Edit</a>
-    <samp>|</samp>
-    <a href="#movie/{{cid}}/delete">Delete</a>
+    <span>|</span>
+    <span class="delete" data-cid="{{cid}}">Delete</span>
   </div>
   <div class="image">
     <img title="{{movie.name}}" src="{{movie.image}}">
@@ -23,18 +26,24 @@
     Gener: <strong>{{movie.gener}}</strong>
   </div>
   <div class="raking margin-text">
-    Ranking: <strong>{{movie.raking}}</strong>
+    Ranking: <strong>{{movie.ranking}}</strong>
   </div>
   <div class="director margin-text">
     Director: <strong>{{movie.director.firstName}} {{movie.director.lastName}}</strong>
   </div>
   <div class="margin-group">
-    <h3 class="page-header">Actors</h3>
-    <ul class="actors">
-      {{#each movie.actors}}
-        <li class="item">{{firstName}} {{lastName}}</li>
-      {{/each}}
-    </ul>
+    <div class="actor-group">
+      <h3 class="page-header">Actors 
+        <a href="#movie/{{cid}}/actors" alt="Edit Actors list">
+          <i class="glyphicon glyphicon-pencil edit-actors"></i>
+        </a>
+      </h3>
+      <ul class="actors">
+        {{#each movie.actors}}
+          <li class="item">{{firstName}} {{lastName}}</li>
+        {{/each}}
+      </ul>
+    </div>
     <h3 class="page-header">Description</h3>
     <div class="description">{{movie.description}}</div>
   </div>

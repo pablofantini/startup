@@ -3,7 +3,8 @@ define([
   'view/MovieDetail',
   'view/MovieList',
   'view/MovieNew',
-], function (Backbone, MovieDetailView, MovieListView, MovieNewView) {
+  'view/MovieEdit',
+], function (Backbone, MovieDetailView, MovieListView, MovieNewView, MovieEditView) {
 
   return {
     /**
@@ -19,46 +20,53 @@ define([
           'movie/new': 'movieNew',
           'movie/:id': 'movie',
           'movie/:id/edit': 'movieEdit',
-          'movie/:id/delete': 'movieDelete',
+          'movie/:id/actors': 'actorEdit',
           '*actions': 'defaultRoute' // Backbone will try match the route above first
         }
       });
       // Instantiate the router
-      var app = new AppRouter;
+      var router = new AppRouter;
 
       // Create MovieDetail View
       var movieDetailView = new MovieDetailView({
+        router: router,
         collection: movieCollection
       });
       
       // Create MovieList View
       var movieListView = new MovieListView({
+        router: router,
         collection: movieCollection
       });
       
-      // Create MovieList New
+      // Create Movie New
       var movieNewView = new MovieNewView({
         collection: movieCollection
       });
       
-      app.on('route:listMovies', function () {
+      // Create Movie Edit
+      var movieEditView = new MovieEditView({
+        collection: movieCollection
+      });
+      
+      router.on('route:listMovies', function () {
         movieListView.render();
       });
-      app.on('route:movie', function (id) {
+      router.on('route:movie', function (id) {
         movieDetailView.render(id);
       });
-      app.on('route:movieNew', function () {
+      router.on('route:movieNew', function () {
         movieNewView.render();
       });
-      app.on('route:movieEdit', function (id) {
-        console.log('edit movie: ' + id);
+      router.on('route:movieEdit', function (id) {
+        movieEditView.render(id);
       });
-      app.on('route:movieDelete', function (id) {
-        console.log('delete movie: ' + id);
+      router.on('route:actorEdit', function () {
+        console.log('edit actor list')
       });
 
-      app.on('route:defaultRoute', function (actions) {
-        app.navigate('movies');
+      router.on('route:defaultRoute', function (actions) {
+        router.navigate('movies');
       });
 
       // Start Backbone history

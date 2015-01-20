@@ -10,32 +10,29 @@ define([
       'description': '',
       'plot': 'images/no_images.jpg',
       'image': 'images/no_images.jpg',
-      'raking': 0,
+      'ranking': 0,
       'actors': '',
       'director': ''
     },
 
     validate: function (attributes) {
-      if (attributes.name == '') {
-        return false
+      if (attributes.name === '') {
+        return 'Input name'
       }
       
-      if (attributes.raking > 10 || attributes.raking < 0) {
-        return false
+      if (attributes.ranking > 10 || attributes.ranking < 0) {
+        return 'The ranking must be between 0 and 10'
+      }
+      
+      if (attributes.year === '' || attributes.year > 2015 || attributes.year < 1900) {
+        return 'Year not is valid'
       }
     },
 
     initialize: function () {
-
-      this.on('change', function () {
-        console.log('- Values for this model have changed.');
-      });
-
       this.on("invalid", function (model, error) {
-        console.log(error);
+        console.warn(error);
       });
-
-      console.log('New movie model was created.');
     },
 
   });

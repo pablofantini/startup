@@ -20,15 +20,10 @@ define([
       return window.localStorage.getItem(DATA_DEFAULT_KEY) == 'true';
     },
     
-    getMovieCollection: function(){
-      return /*TODO */
-    },
-    
     makeData: function () {
       
       // Create movie Collection
       var movieCollection = new MovieCollection();
-      movieCollection.fetch();
     
       /* INCEPTION */
       
@@ -63,13 +58,13 @@ define([
       
       var inception = new MovieModel({
         name: 'Inception',
-        year: '20010',
+        year: '2010',
         gener: 'Sci-Fi',
         description: 'A thief who steals corporate secrets through use of dream-sharing technology is ' 
           + 'given the inverse task of planting an idea into the mind of a CEO.',
         plot: 'http://ia.media-imdb.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_SX214_AL_.jpg',
         image: 'http://ia.media-imdb.com/images/M/MV5BMTY3MzMzMDgyMF5BMl5BanBnXkFtZTcwMzY0OTk1Mw@@._V1__SX640_SY720_.jpg',
-        raking: 7.6,
+        ranking: 7,
         director: christopherNolan,
         actors: inceptionActors,
       });
@@ -105,7 +100,7 @@ define([
           + 'by an Interpol agent.',
         plot: 'http://ia.media-imdb.com/images/M/MV5BMjEzNDM2OTgzN15BMl5BanBnXkFtZTcwMzU3MTIzMQ@@._V1_SX214_AL_.jpg',
         image: 'http://ia.media-imdb.com/images/M/MV5BNTYyNTAwOTAyMF5BMl5BanBnXkFtZTcwMTIyNzkwNQ@@._V1__SX640_SY720_.jpg',
-        raking: 7.6,
+        ranking: 7,
         director: andrewNiccol,
         actors: lordOfWarActors,
       });
@@ -146,7 +141,7 @@ define([
         description: 'After being held captive in an Afghan cave, an industrialist creates a unique weaponized ' + 'suit of armor to fight against evil. This leads him to conflict within his own company.',
         plot: 'http://ia.media-imdb.com/images/M/MV5BMTczNTI2ODUwOF5BMl5BanBnXkFtZTcwMTU0NTIzMw@@._V1_SX214_AL_.jpg',
         image: 'http://ia.media-imdb.com/images/M/MV5BMTUzODkyNDE2OV5BMl5BanBnXkFtZTcwMzEzNTIzMw@@._V1__SX640_SY720_.jpg',
-        raking: 7.9,
+        ranking: 8,
         director: jonFavreau,
         actors: ironmanActors,
       });
@@ -170,7 +165,7 @@ define([
           + 'his declining health and a vengeful mad man with ties to his fathers legacy.',
         plot: 'http://ia.media-imdb.com/images/M/MV5BMTM0MDgwNjMyMl5BMl5BanBnXkFtZTcwNTg3NzAzMw@@._V1_SX214_AL_.jpg',
         image: 'http://ia.media-imdb.com/images/M/MV5BMTY4MzgzMjEwNl5BMl5BanBnXkFtZTcwNTgwODYzMw@@._V1__SX640_SY720_.jpg',
-        raking: 7.1,
+        ranking: 6,
         director: jonFavreau,
         actors: ironman2Actors,
       });

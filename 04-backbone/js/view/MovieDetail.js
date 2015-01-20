@@ -1,6 +1,6 @@
 define([
   'backbone',
-  'hbs!../../template/movieDetail',
+  'hbs!../templates/movieDetail',
 ], function (Backbone, movieTemplate) {
 
   return Backbone.View.extend({
@@ -8,30 +8,30 @@ define([
     tagName: 'article',
 
     events: {
-      "click .edit": "edit",
-      "click .delete": "delete",
-      /*
-      "click .icon.doc": "select",
-      "contextmenu .icon.doc": "showMenu",
-      "click .show_notes": "toggleNotes",
-      "click .title .lock": "editAccessLevel",
-      "mouseover .title .date": "showTooltip"
-      */
-    },
-
-    edit: function () {
-      console.log('edit!!!!');
+      'click .delete': 'delete',
     },
     
-    delete: function () {
+    initialize: function(){
+      this.listenTo(this.collection, 'change', this.showMovie);
+    },
+    
+    delete: function (e) {
       if(confirm('are you sure to delete this movie?')) {
-        console.log('borrar'); 
+        var model = this.collection.get($(e.currentTarget).attr('data-cid'));
+        model.destroy();
        }
+    },
+    
+    showMovie: function(movie) {
+      this.options.router.navigate('#movie/'+movie.cid,{trigger : true});
     },
 
     render: function (cid) {
-      $(this.el).html(movieTemplate({cid: cid, movie: this.collection.get(cid).attributes}));
-      return this;
+      if(this.collection.get(cid)){
+        $(this.el).html(movieTemplate({cid: cid, movie: this.collection.get(cid).attributes}));
+      }else{
+        this.options.router.navigate('#movies',{trigger : true});
+      }
     }
   });
 
