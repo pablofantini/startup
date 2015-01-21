@@ -1,8 +1,8 @@
 define([
   'backbone',
   'lib/geners',
-  'model/people',
-  'model/movie',
+  'model/People',
+  'model/Movie',
   'hbs!../templates/movie',
 ], function (Backbone, genersLib, PeopleModel, MovieModel, movieTemplate) {
 
