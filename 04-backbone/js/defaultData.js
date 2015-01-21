@@ -2,11 +2,13 @@ define([
   'model/People',
   'model/Movie',
   'collection/Movies',
-  'collection/Actors'
-], function (People, MovieModel, MovieCollection, ActorsCollection) {
+], function (People, MovieModel, MovieCollection) {
 
   var DATA_DEFAULT_KEY = 'data-default-load';
   
+  /**
+   * mark default data load in local storage
+   */ 
   function markDefaultLoad() {
      window.localStorage.setItem(DATA_DEFAULT_KEY, true);
   }
@@ -15,15 +17,18 @@ define([
     
     /**
      * Retrun true if default load already load
+     * @return {boolean}
      */ 
     isDefaultLoad: function() {
       return window.localStorage.getItem(DATA_DEFAULT_KEY) == 'true';
     },
     
-    makeData: function () {
-      
-      // Create movie Collection
-      var movieCollection = new MovieCollection();
+    /**
+     * Create default movies data
+     * and save into localstorage
+     * @param {MovieCollection} movieCollection
+     */ 
+    makeData: function (movieCollection) {
     
       /* INCEPTION */
       
@@ -33,28 +38,6 @@ define([
         lastName: 'Nolan',
         role: 'Director'
       });
-      
-      // Create Actors
-      var leonardoDiCaprio = new People({
-        firstName: 'Leonardo',
-        lastName: 'DiCaprio',
-        role: 'Actor'
-      });
-      
-      var josephGordon = new People({
-        firstName: 'Joseph',
-        lastName: 'Gordon-Levitt',
-        role: 'Actor'
-      });
- 
-      var ellenPage = new People({
-        firstName: 'Ellen',
-        lastName: 'Page',
-        role: 'Actress'
-      });
-      
-      var inceptionActors = new ActorsCollection();
-      inceptionActors.add([leonardoDiCaprio, josephGordon, ellenPage]);
       
       var inception = new MovieModel({
         name: 'Inception',
@@ -66,7 +49,6 @@ define([
         image: 'http://ia.media-imdb.com/images/M/MV5BMTY3MzMzMDgyMF5BMl5BanBnXkFtZTcwMzY0OTk1Mw@@._V1__SX640_SY720_.jpg',
         ranking: 7,
         director: christopherNolan,
-        actors: inceptionActors,
       });
   
       /* LORD OF WAR */
@@ -76,21 +58,6 @@ define([
         lastName: 'Niccol',
         role: 'Director'
       });
-      
-      var nicolasCage = new People({
-        firstName: 'Nicolas',
-        lastName: 'Cage',
-        role: 'Actor'
-      });
-      
-      var bridgetMoynahan = new People({
-        firstName: 'Bridget',
-        lastName: 'Moynahan',
-        role: 'Actress'
-      });
-      
-      var lordOfWarActors = new ActorsCollection();
-      lordOfWarActors.add([nicolasCage, bridgetMoynahan]);
       
       var lorOfWar = new MovieModel({
         name: 'Lord of War',
@@ -102,7 +69,6 @@ define([
         image: 'http://ia.media-imdb.com/images/M/MV5BNTYyNTAwOTAyMF5BMl5BanBnXkFtZTcwMTIyNzkwNQ@@._V1__SX640_SY720_.jpg',
         ranking: 7,
         director: andrewNiccol,
-        actors: lordOfWarActors,
       });
     
       /* IRONMAN */
@@ -113,27 +79,6 @@ define([
         role: 'Director'
       });
       
-      var robertDowney = new People({
-        firstName: 'Robert',
-        lastName: 'Downey Jr',
-        role: 'Actor'
-      });
-      
-      var terrenceHoward = new People({
-        firstName: 'Terrence',
-        lastName: 'Howard',
-        role: 'Actor'
-      });
-      
-      var gwynethPaltrow = new People({
-        firstName: 'Gwyneth',
-        lastName: 'Paltrow',
-        role: 'Actress'
-      });
-  
-      var ironmanActors = new ActorsCollection();
-      ironmanActors.add([robertDowney, gwynethPaltrow, terrenceHoward]);
-      
       var ironman = new MovieModel({
         name: 'Ironman',
         year: '2008',
@@ -143,19 +88,9 @@ define([
         image: 'http://ia.media-imdb.com/images/M/MV5BMTUzODkyNDE2OV5BMl5BanBnXkFtZTcwMzEzNTIzMw@@._V1__SX640_SY720_.jpg',
         ranking: 8,
         director: jonFavreau,
-        actors: ironmanActors,
       });
     
       /* IRCONMAN 2 */
-      
-      var donCheadle = new People({
-        firstName: 'Don',
-        lastName: 'Cheadle',
-        role: 'Actor'
-      });
-
-      var ironman2Actors = new ActorsCollection();
-      ironman2Actors.add([robertDowney, donCheadle, terrenceHoward]);
 
       var ironman2 = new MovieModel({
         name: 'Ironman 2',
@@ -167,7 +102,6 @@ define([
         image: 'http://ia.media-imdb.com/images/M/MV5BMTY4MzgzMjEwNl5BMl5BanBnXkFtZTcwNTgwODYzMw@@._V1__SX640_SY720_.jpg',
         ranking: 6,
         director: jonFavreau,
-        actors: ironman2Actors,
       });
 
       /* MAKE COLLECTION */

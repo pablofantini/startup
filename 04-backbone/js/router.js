@@ -24,6 +24,7 @@ define([
           '*actions': 'defaultRoute' // Backbone will try match the route above first
         }
       });
+      
       // Instantiate the router
       var router = new AppRouter;
 

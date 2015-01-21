@@ -78,11 +78,6 @@ article .description {
 .back-button {
   margin: 20px;
 }
-.edit-actors {
-  color: #999;
-  float: right;
-  cursor: pointer;
-}
 
 /* smartphones, iPhone, portrait 480x320 phones */
 @media (max-width:320px) {

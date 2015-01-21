@@ -23,9 +23,17 @@ define([
 
     initialize: function () {
       this.on("invalid", function (model, error) {
-        console.log(error);
+        console.warn(error);
       });
-    }
+    },
+    
+    /**
+     * Get complete name
+     * @return {String}
+     */ 
+    getName: function () {
+      return this.get('firstName') + ' ' + this.get('lastName');  
+    },
+    
   });
-
 });

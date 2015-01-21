@@ -1,9 +1,8 @@
 define([
   'backbone',
   'lib/geners',
-  'model/people',
   'hbs!../templates/movie',
-], function (Backbone, genersLib, PeopleModel, movieTemplate) {
+], function (Backbone, genersLib, movieTemplate) {
 
   return Backbone.View.extend({
     el: $('body'),
@@ -24,7 +23,6 @@ define([
       var $form = $(e.currentTarget)
       
       var movie = this.collection.get($form.find('#cid').val());
-      //var director = new PeopleModel();
       movie.get('director').firstName = $form.find('#director-first-name').val();
       movie.get('director').lastName = $form.find('#director-last-name').val();
       
@@ -36,7 +34,6 @@ define([
         plot: $form.find('#plot').val(),
         image: $form.find('#image').val(),
         ranking: $form.find('#ranking').val(),
-        //director: director
       });
 
       if (movie.isValid()) {

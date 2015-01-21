@@ -1,5 +1,9 @@
 define([], function () {
   return {
+    /**
+     * Create array whit all movies geners
+     * @return {Array}
+     */ 
     get: function(){
       return [
         'Action',

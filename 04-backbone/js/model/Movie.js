@@ -11,7 +11,6 @@ define([
       'plot': 'images/no_images.jpg',
       'image': 'images/no_images.jpg',
       'ranking': 0,
-      'actors': '',
       'director': ''
     },
 

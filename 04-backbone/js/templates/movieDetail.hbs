@@ -32,18 +32,6 @@
     Director: <strong>{{movie.director.firstName}} {{movie.director.lastName}}</strong>
   </div>
   <div class="margin-group">
-    <div class="actor-group">
-      <h3 class="page-header">Actors 
-        <a href="#movie/{{cid}}/actors" alt="Edit Actors list">
-          <i class="glyphicon glyphicon-pencil edit-actors"></i>
-        </a>
-      </h3>
-      <ul class="actors">
-        {{#each movie.actors}}
-          <li class="item">{{firstName}} {{lastName}}</li>
-        {{/each}}
-      </ul>
-    </div>
     <h3 class="page-header">Description</h3>
     <div class="description">{{movie.description}}</div>
   </div>

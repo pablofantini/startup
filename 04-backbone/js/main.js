@@ -5,13 +5,16 @@ require([
   'collection/Movies',
 ], function (Backbone, router, defaultData, MoviesCollection) {
   
-  // generate default movie data if not exist
-  if(!defaultData.isDefaultLoad()) {
-    defaultData.makeData(); 
-  }
-  
-  var movieCollection = new MoviesCollection();
-  movieCollection.fetch();
+  $(document).ready(function () {
+    var movieCollection = new MoviesCollection();
+    movieCollection.fetch();
+    
+    // generate default movie data if not exist
+    if(!defaultData.isDefaultLoad()) {
+      defaultData.makeData(movieCollection); 
+    }
 
-  router.start(movieCollection);
+    // Start router
+    router.start(movieCollection);
+  });
 });

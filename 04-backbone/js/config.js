@@ -1,4 +1,4 @@
-//Config requilejs
+//Config requirejs
 requirejs.config({
   //main
   deps: ['backbone', 'hbs','main'],

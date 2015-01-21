@@ -16,7 +16,7 @@ define([
     },
     
     delete: function (e) {
-      if(confirm('are you sure to delete this movie?')) {
+      if(confirm('Are you sure to delete this movie?')) {
         var model = this.collection.get($(e.currentTarget).attr('data-cid'));
         model.destroy();
        }
