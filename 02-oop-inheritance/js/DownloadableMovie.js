@@ -1,12 +1,21 @@
 'use strict';
 
-var DownloadableMovie = function () {
+var DownloadableMovie = (function () {
 
-  Movie.call(this);
+  /**
+   * Constructor  
+   */ 
+  function DownloadableMovie() {
+    Movie.call(this);
+  }
 
-  /* Public functions */ 
+  DownloadableMovie.prototype = new Movie();
+
+  /* Public functions */
   
-  this.download = function () {
+  DownloadableMovie.prototype.download = function () {
     console.log('download movie: ' + this.get('title'))
   }
-}
+
+  return DownloadableMovie;
+})();

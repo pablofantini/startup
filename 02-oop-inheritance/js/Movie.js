@@ -18,7 +18,12 @@ var Movie = (function () {
      * @param {String} attr
      */
     this.get = function (attr) {
-      return attributes[attr];
+      if(attributes[attr]) {
+        return attributes[attr];
+      }else{
+        console.warn('attribute '+ attr + 'not defined');
+        return null;
+      }
     }
 
     /**
