@@ -1,3 +1,5 @@
+'use strict'
+ 
 // jQuery module
 var $ = require('jquery');
 
