@@ -1,4 +1,4 @@
-define(['js/model/movie', 'js/model/people'], function (MovieModel, PeopleModel) {
+define(['js/model/Movie', 'js/model/People'], function (MovieModel, PeopleModel) {
   describe("Movie Model Spec", function () {
 
     var movie = new MovieModel({

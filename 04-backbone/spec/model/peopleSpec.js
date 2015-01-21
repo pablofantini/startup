@@ -1,4 +1,4 @@
-define(['js/model/people'], function (People) {
+define(['js/model/People'], function (People) {
   describe("People Model Spec", function () {
     
     it("Check full name generator", function () {
