@@ -31,8 +31,8 @@ define([
         year: $form.find('#year').val(),
         gener: $form.find('#gener').val(),
         description: $form.find('#description').val(),
-        plot: $form.find('#plot').val(),
-        image: $form.find('#image').val(),
+        plot: $form.find('#plot').val() != '' ? $form.find('#plot').val() : movie.defaults.plot,
+        image: $form.find('#image').val() != '' ? $form.find('#image').val() : movie.defaults.image,
         ranking: $form.find('#ranking').val(),
       });
 

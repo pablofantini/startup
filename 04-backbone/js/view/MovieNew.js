@@ -27,16 +27,22 @@ define([
         lastName: $('#director-last-name').val(),
         role: 'Director'
       });
-      var newMovie = new MovieModel({
+      var movieData = {
         name: $('#name').val(),
         year: $('#year').val(),
         gener: $('#gener').val(),
         description: $('#description').val(),
-        plot: $('#plot').val(),
-        image: $('#image').val(),
         ranking: $('#ranking').val(),
         director: director.attributes,
-      });
+      }
+      if($('#plot').val()){
+        movieData.plot = $('#plot').val();
+      }
+      if($('#image').val()){
+        movieData.image = $('#image').val();
+      }
+      
+      var newMovie = new MovieModel(movieData);
 
       if (newMovie.isValid()) {
         this.collection.add(newMovie);

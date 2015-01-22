@@ -8,8 +8,8 @@ define([
       'year': '',
       'gener': 'unknow',
       'description': '',
-      'plot': 'images/no_images.jpg',
-      'image': 'images/no_images.jpg',
+      'plot': 'images/no_image.jpg',
+      'image': 'images/no_banner.jpg',
       'ranking': 0,
       'director': ''
     },
