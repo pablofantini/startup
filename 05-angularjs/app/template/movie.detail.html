@@ -1,0 +1,37 @@
+<a href="#movies" type="button" class="btn btn-default back-button">
+  <i class="glyphicon glyphicon-chevron-left"></i> Go to list
+</a>
+<article>
+  <div class="action">
+    <i class="glyphicon glyphicon-pencil"></i>
+    <a href="#movie/{{cid}}/edit">Edit</a>
+    <span>|</span>
+    <span class="delete" data-cid="{{cid}}">Delete</span>
+  </div>
+  <div class="image">
+    <img title="{{movie.name}}" src="{{movie.image}}">
+  </div>
+  <div class="plot">
+    <img title="{{movie.name}}" src="{{movie.plot}}">
+  </div>
+
+  <div class="title margin-text">
+    {{movie.name}}
+  </div>
+  <div class="year margin-text">
+    Year: <strong>{{movie.year}}</strong>
+  </div>
+  <div class="genre margin-text">
+    Gener: <strong>{{movie.gener}}</strong>
+  </div>
+  <div class="raking margin-text">
+    Ranking: <strong>{{movie.ranking}}</strong>
+  </div>
+  <div class="director margin-text">
+    Director: <strong>{{movie.director.firstName}} {{movie.director.lastName}}</strong>
+  </div>
+  <div class="margin-group">
+    <h3 class="page-header">Description</h3>
+    <div class="description">{{movie.description}}</div>
+  </div>
+</article>

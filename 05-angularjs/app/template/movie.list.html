@@ -1,0 +1,16 @@
+<div class="container theme-showcase" role="main">
+  <h1 class="page-header"> List of Movies </h1>
+  <div class="new-movie">
+    <a href="#movie/new" type="button" class="btn btn-default">
+      <i class="glyphicon glyphicon-plus"></i> New Movie
+    </a>
+  </div>
+  
+  <a ng-repeat="movie in movies" class="movie-list" href="#movie/{{movie.id}}">
+    <article>
+      <img title="{{movie.name}}" src="{{movie.plot}}">
+      {{movie.name}}
+    </article>
+  </a>
+  
+</div>
