@@ -1,72 +1,67 @@
 <div class="container theme-showcase" role="main">
-  <h1 class="page-header"> {{#if movie.name}} {{movie.name}} {{else}} New Movies {{/if}}</h1>
+  <h1 class="page-header" ng-if="movie.name">{{movie.name}} </h1>
+  <h1 class="page-header" ng-if="!movie.name"> New Movies </h1>
   <article>
-    <form class="{{#if cid}}edit{{else}}new{{/if}}">
-      {{#if cid}}
-        <input type="hidden" id="cid" name="cid" value="{{cid}}">
-      {{/if}}
+    <form ng-submit="submit()">
       <div class="button-group"></div>
       <div class="error-group alert alert-danger" role="alert">
         <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
         <span class="sr-only">Error:</span>
-        <samp id="error"></samp>
+        <span ng-show="form.year.$error.min || form.year.$error.max">Year is invalid!</span>
+        <span ng-show="form.ranking.$error.min || form.ranking.$error.max"> The ranking must be in range 0 to 10!</span>
       </div>
       <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-film"></i></span>
-        <input id="name" type="text" class="form-control" placeholder="Title" required 
-               {{#if movie.name}} value="{{movie.name}}"{{/if}}>
+        <input ng-model="movie.name" type="text" class="form-control" placeholder="Title" required>
       </div>
       
       <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
-        <input id="year" type="number" class="form-control" placeholder="Year" required
-               {{#if movie.year}} value="{{movie.year}}"{{/if}}>
+        <input ng-model="movie.year" name="year" min="1900" max="2015" type="number" class="form-control" placeholder="Year" required>
       </div>
       
       <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-tags"></i></span>
-        <select id="gener" class="form-control" placeholder="Gener" required>
+        <select ng-model="movie.gener" class="form-control" placeholder="Gener" required>
           <option selected disabled value="">Gener</option>
-          {{#each geners}}
-            <option value="{{this}}">{{this}}</option>
-          {{/each}}
+          <option ng-repeat="gener in geners" 
+                  ng-selected="{{movie.gener == gener}}"
+                  value="{{gener}}">{{gener}}</option>
         </select>
       </div>
       
       <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-star"></i></span>
-        <input id="ranking" type="number" class="form-control" placeholder="Ranking" required
-               {{#if movie.ranking}} value="{{movie.ranking}}"{{/if}}>
+        <input ng-model="movie.ranking" name="ranking" min="0" max="10" type="number" class="form-control" placeholder="Ranking" required>
       </div>
       
       <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-        <input id="director-first-name" type="text" class="form-control" placeholder="Director first name" required {{#if movie.director}} value="{{movie.director.firstName}}"{{/if}}>
+        <input ng-model="movie.director.firstName" type="text" class="form-control" placeholder="Director first name" required>
       </div>
       <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-        <input id="director-last-name" type="text" class="form-control" placeholder="Director last name" required {{#if movie.director}} value="{{movie.director.lastName}}"{{/if}}>
+        <input ng-model="movie.director.lastName" type="text" class="form-control" placeholder="Director last name" required>
       </div>
       
       <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-picture"></i></span>
-        <input id="image" type="text" class="form-control" placeholder="Image url (ex: http://some.page/image.png)"
-               {{#if movie.image}} value="{{movie.image}}"{{/if}}>
+        <input ng-model="movie.image" type="text" class="form-control" placeholder="Image url (ex: http://some.page/image.png)">
       </div>
       
       <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-picture"></i></span>
-        <input id="plot" type="text" class="form-control" placeholder="Plot url (ex: http://some.page/plot.png)" 
-               {{#if movie.plot}} value="{{movie.plot}}"{{/if}}>
+        <input ng-model="movie.plot" type="text" class="form-control" placeholder="Plot url (ex: http://some.page/plot.png)">
       </div>
       
       <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-        <textarea id="description" class="form-control alias" placeholder="description" rows="5">{{#if movie.description}}{{movie.description}}{{/if}}</textarea>
+        <textarea ng-model="movie.description" class="form-control alias" placeholder="description" rows="5"></textarea>
       </div>
       <div class="button-group">
         <input type="submit" value="Submit" type="button" class="btn btn-primary">
         <button type="reset" value="Reset" type="button" class="btn btn-default">Reset</button>
+        <button ng-click="goBack()" type="button" class="btn btn-default">Cancel</button>
       </div>
     </form>
   </article>

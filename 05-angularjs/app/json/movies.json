@@ -1,0 +1,58 @@
+{
+  "1": {
+    "id": 1,
+    "name": "Inception",
+    "year": 2010,
+    "gener": "Sci-Fi",
+    "description": "A thief who steals corporate secrets through use of dream-sharing technology is given the inverse task of planting an idea into the mind of a CEO.",
+    "plot": "http://ia.media-imdb.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_SX214_AL_.jpg",
+    "image": "http://ia.media-imdb.com/images/M/MV5BMTY3MzMzMDgyMF5BMl5BanBnXkFtZTcwMzY0OTk1Mw@@._V1__SX640_SY720_.jpg",
+    "ranking": 7,
+    "director": {
+      "firstName": "Christopher",
+      "lastName": "Nolan"
+    }
+  },
+  "2": {
+    "id": 2,
+    "name": "Lord of War",
+    "year": 2005,
+    "gener": "Thriller",
+    "description": "An arms dealer confronts the morality of his work as he is being chased by an Interpol agent.",
+    "plot": "http://ia.media-imdb.com/images/M/MV5BMjEzNDM2OTgzN15BMl5BanBnXkFtZTcwMzU3MTIzMQ@@._V1_SX214_AL_.jpg",
+    "image": "http://ia.media-imdb.com/images/M/MV5BNTYyNTAwOTAyMF5BMl5BanBnXkFtZTcwMTIyNzkwNQ@@._V1__SX640_SY720_.jpg",
+    "ranking": 7,
+    "director": {
+      "firstName": "Andrew",
+      "lastName": "Niccol"
+    }
+  },
+  "3": {
+    "id": 3,
+    "name": "Ironman",
+    "year": 2008,
+    "gener": "Sci-Fi",
+    "description": "After being held captive in an Afghan cave, an industrialist creates a unique weaponized suit of armor to fight against evil. This leads him to conflict within his own company.",
+    "plot": "http://ia.media-imdb.com/images/M/MV5BMTczNTI2ODUwOF5BMl5BanBnXkFtZTcwMTU0NTIzMw@@._V1_SX214_AL_.jpg",
+    "image": "http://ia.media-imdb.com/images/M/MV5BMTUzODkyNDE2OV5BMl5BanBnXkFtZTcwMzEzNTIzMw@@._V1__SX640_SY720_.jpg",
+    "ranking": 8,
+    "director": {
+      "firstName": "Jon",
+      "lastName": "Favreau"
+    }
+  },
+  "4": {
+    "id": 4,
+    "name": "Ironman 2",
+    "year": 2010,
+    "gener": "Sci-Fi",
+    "description": "With the world now aware of his identity as Iron Man, Tony Stark must contend with both his declining health and a vengeful mad man with ties to his fathers legacy.",
+    "plot": "http://ia.media-imdb.com/images/M/MV5BMTM0MDgwNjMyMl5BMl5BanBnXkFtZTcwNTg3NzAzMw@@._V1_SX214_AL_.jpg",
+    "image": "http://ia.media-imdb.com/images/M/MV5BMTY4MzgzMjEwNl5BMl5BanBnXkFtZTcwNTgwODYzMw@@._V1__SX640_SY720_.jpg",
+    "ranking": 6,
+    "director": {
+      "firstName": "Jon",
+      "lastName": "Favreau"
+    }
+  }
+}

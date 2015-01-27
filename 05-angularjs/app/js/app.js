@@ -12,38 +12,46 @@ angular.module('app', [
 ])
 
 
-.config(["$routeProvider",
+.config(['$routeProvider',
   function ($routeProvider) {
-    
+
     $routeProvider
-    .when('/movies', {
-      controller: 'MoviesCtrl',
-      templateUrl: 'app/template/movie.list.html',
-    })
-    
+      .when('/movies', {
+        controller: 'MoviesCtrl',
+        templateUrl: 'app/template/movie.list.html',
+      })
+
     .when('/movie/:id', {
       templateUrl: 'app/template/movie.detail.html',
       controller: 'MovieDetailCtrl'
     })
 
-    .when('/movie/new', {
-      templateUrl: 'app/template/movie.new.html',
+    .when('/movies/new', {
+      templateUrl: 'app/template/movie.form.html',
       controller: 'MovieNewCtrl'
     })
 
     .when('/movie/:id/edit', {
-      templateUrl: 'app/template/movie.edit.html',
+      templateUrl: 'app/template/movie.form.html',
       controller: 'MovieEditCtrl'
     })
 
     ;
 
     $routeProvider.otherwise('/movies');
-}])
+  }
+])
 
-
-.config([function(){
-  console.log('start application');
-}])
+/**
+ * Run application
+ * Configure template cache
+ */ 
+.run(['$templateCache','$http',
+  function($templateCache, $http){
+    $http.get('app/template/movie.list.html', {cache:$templateCache});
+    $http.get('app/template/movie.detail.html', {cache:$templateCache});
+    $http.get('app/template/movie.form.html', {cache:$templateCache});
+  }
+])
 
 ;

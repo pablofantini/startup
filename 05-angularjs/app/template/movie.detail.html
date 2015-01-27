@@ -4,15 +4,17 @@
 <article>
   <div class="action">
     <i class="glyphicon glyphicon-pencil"></i>
-    <a href="#movie/{{cid}}/edit">Edit</a>
+    <a href="#movie/{{movie.id}}/edit">Edit</a>
     <span>|</span>
-    <span class="delete" data-cid="{{cid}}">Delete</span>
+    <span class="delete" ng-click="delete()">Delete</span>
   </div>
   <div class="image">
-    <img title="{{movie.name}}" src="{{movie.image}}">
+    <img ng-if="movie.image" title="{{movie.name}}" ng-src="{{movie.image}}">
+    <img ng-if="!movie.image" title="{{movie.name}}" ng-src="app/img/no_banner.jpg">
   </div>
   <div class="plot">
-    <img title="{{movie.name}}" src="{{movie.plot}}">
+    <img ng-if="movie.plot" title="{{movie.name}}" ng-src="{{movie.plot}}">
+    <img ng-if="!movie.image" title="{{movie.name}}" ng-src="app/img/no_image.jpg">
   </div>
 
   <div class="title margin-text">
