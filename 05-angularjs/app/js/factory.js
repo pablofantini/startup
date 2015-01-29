@@ -82,8 +82,7 @@ angular.module('app.factories', [])
     /* PUBLIC */
     
     /**
-     * Make and return movie list into callback
-     * @param {function} callback
+     * Make and return movie list into promise
      */ 
     factory.getMovieList = function () {
       var deferred = $q.defer();
@@ -93,6 +92,8 @@ angular.module('app.factories', [])
           movies = data;
           persistData();
           deferred.resolve(movies);
+        }, function(err){
+          deferred.reject(err);
         });
       } else {
         if (movies == null) {
@@ -100,7 +101,6 @@ angular.module('app.factories', [])
         }
         deferred.resolve(movies);
       }
-      
       return deferred.promise;
     };
 

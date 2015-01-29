@@ -8,8 +8,8 @@ angular.module('app.controllers', [])
 /**
  * Movies list controller
  */
-.controller('MoviesCtrl', ['$scope','MoviesFactory',
-  function ($scope, MoviesFactory) {
+.controller('MoviesCtrl', ['$scope','MoviesFactory', '$timeout',
+  function ($scope, MoviesFactory, $timeout) {
     MoviesFactory.getMovieList().then(function(movies){
       $scope.movies = movies;
     });
