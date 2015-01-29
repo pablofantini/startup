@@ -5,6 +5,9 @@
  */
 angular.module('app.factories', [])
 
+/**
+ * Movies geners list
+ */ 
 .factory('MoviesGeners', [
   function () {
     return {
@@ -38,16 +41,17 @@ angular.module('app.factories', [])
   }
 ])
 
+/**
+ * Movie model
+ */ 
 .factory('MoviesFactory', ['DefaultDataService',
   function (DefaultDataService) {
 
     var movies;
-
     var factory = {};
 
     /**
      * Save current data into localStorage
-     * @param {Type}
      */
     function persistData() {
       localStorage.setItem('movies-data', JSON.stringify(movies));
@@ -55,7 +59,6 @@ angular.module('app.factories', [])
 
     /**
      * Load data from localStorage
-     * @param {Type}
      */
     function loadStoreData() {
       movies = JSON.parse(localStorage.getItem('movies-data'))
@@ -63,16 +66,26 @@ angular.module('app.factories', [])
 
     /**
      * check if exist data into localStorage
-     * @param {Type}
+     * @return {boolean}
      */
     function existLocalData() {
       return localStorage.getItem('movies-data') != undefined;
     }
 
+    /**
+     * Make basic UID
+     * @return {number} UID 
+     */ 
     function generateUID() {
       return (new Date).getTime(); 
     }
 
+    /* PUBLIC */
+    
+    /**
+     * Make and return movie list into callback
+     * @param {function} callback
+     */ 
     factory.getMovieList = function (callback) {
       if (!existLocalData()) {
         DefaultDataService.success(function (data) {
@@ -88,10 +101,19 @@ angular.module('app.factories', [])
       }
     };
 
+    /**
+     * Get movie by id
+     * @param {number} id
+     * @return {Object}
+     */ 
     factory.getMovie = function (id) {
       return movies != null ? movies[id] : null;
     };
 
+    /**
+     * Save movie, if not have id is new movie and generate id
+     * @param {Object} movie object
+     */ 
     factory.saveMovie = function (movie) {
       if(!movie.id){
         movie.id = generateUID(); 

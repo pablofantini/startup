@@ -11,7 +11,10 @@ angular.module('app', [
     'app.factories'
 ])
 
-
+/**
+ * Initial configuration
+ * Configure router
+ */ 
 .config(['$routeProvider',
   function ($routeProvider) {
 

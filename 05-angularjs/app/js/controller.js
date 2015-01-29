@@ -27,7 +27,6 @@ angular.module('app.controllers', [])
     }
     
     $scope.delete = function () {
-      console.log('delete');
       MoviesFactory.deleteMovie(movieId);
       $location.path('/movies');
     }
