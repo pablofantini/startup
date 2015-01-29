@@ -10,7 +10,7 @@ angular.module('app.controllers', [])
  */
 .controller('MoviesCtrl', ['$scope','MoviesFactory',
   function ($scope, MoviesFactory) {
-    MoviesFactory.getMovieList(function(movies){
+    MoviesFactory.getMovieList().then(function(movies){
       $scope.movies = movies;
     });
 }])

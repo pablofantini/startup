@@ -44,11 +44,10 @@ angular.module('app.factories', [])
 /**
  * Movie model
  */ 
-.factory('MoviesFactory', ['DefaultDataService',
-  function (DefaultDataService) {
-
-    var movies;
-    var factory = {};
+.factory('MoviesFactory', ['$q', 'DefaultDataService',
+  function ($q, DefaultDataService) {
+    var factory = {},
+        movies;
 
     /**
      * Save current data into localStorage
@@ -86,19 +85,23 @@ angular.module('app.factories', [])
      * Make and return movie list into callback
      * @param {function} callback
      */ 
-    factory.getMovieList = function (callback) {
+    factory.getMovieList = function () {
+      var deferred = $q.defer();
+        
       if (!existLocalData()) {
         DefaultDataService.success(function (data) {
           movies = data;
           persistData();
-          callback(movies);
+          deferred.resolve(movies);
         });
       } else {
         if (movies == null) {
           loadStoreData();
         }
-        callback(movies);
+        deferred.resolve(movies);
       }
+      
+      return deferred.promise;
     };
 
     /**
