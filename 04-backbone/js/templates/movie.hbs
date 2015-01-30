@@ -1,0 +1,73 @@
+<div class="container theme-showcase" role="main">
+  <h1 class="page-header"> {{#if movie.name}} {{movie.name}} {{else}} New Movies {{/if}}</h1>
+  <article>
+    <form class="{{#if cid}}edit{{else}}new{{/if}}">
+      {{#if cid}}
+        <input type="hidden" id="cid" name="cid" value="{{cid}}">
+      {{/if}}
+      <div class="button-group"></div>
+      <div class="error-group alert alert-danger" role="alert">
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+        <span class="sr-only">Error:</span>
+        <samp id="error"></samp>
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-film"></i></span>
+        <input id="name" type="text" class="form-control" placeholder="Title" required 
+               {{#if movie.name}} value="{{movie.name}}"{{/if}}>
+      </div>
+      
+      <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+        <input id="year" type="number" class="form-control" placeholder="Year" required
+               {{#if movie.year}} value="{{movie.year}}"{{/if}}>
+      </div>
+      
+      <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-tags"></i></span>
+        <select id="gener" class="form-control" placeholder="Gener" required>
+          <option selected disabled value="">Gener</option>
+          {{#each geners}}
+            <option value="{{this}}">{{this}}</option>
+          {{/each}}
+        </select>
+      </div>
+      
+      <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-star"></i></span>
+        <input id="ranking" type="number" class="form-control" placeholder="Ranking" required
+               {{#if movie.ranking}} value="{{movie.ranking}}"{{/if}}>
+      </div>
+      
+      <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+        <input id="director-first-name" type="text" class="form-control" placeholder="Director first name" required {{#if movie.director}} value="{{movie.director.firstName}}"{{/if}}>
+      </div>
+      <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+        <input id="director-last-name" type="text" class="form-control" placeholder="Director last name" required {{#if movie.director}} value="{{movie.director.lastName}}"{{/if}}>
+      </div>
+      
+      <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-picture"></i></span>
+        <input id="image" type="text" class="form-control" placeholder="Image url (ex: http://some.page/image.png)"
+               {{#if movie.image}} value="{{movie.image}}"{{/if}}>
+      </div>
+      
+      <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-picture"></i></span>
+        <input id="plot" type="text" class="form-control" placeholder="Plot url (ex: http://some.page/plot.png)" 
+               {{#if movie.plot}} value="{{movie.plot}}"{{/if}}>
+      </div>
+      
+      <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+        <textarea id="description" class="form-control alias" placeholder="description" rows="5">{{#if movie.description}}{{movie.description}}{{/if}}</textarea>
+      </div>
+      <div class="button-group">
+        <input type="submit" value="Submit" type="button" class="btn btn-primary">
+        <button type="reset" value="Reset" type="button" class="btn btn-default">Reset</button>
+      </div>
+    </form>
+  </article>
+</div>
