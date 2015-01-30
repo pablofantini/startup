@@ -27,12 +27,14 @@ define([
         return 'Year not is valid'
       }
     },
-
-    initialize: function () {
-      this.on("invalid", function (model, error) {
-        console.warn(error);
-      });
-    },
+    
+    save: function(attributes, options) {
+        attributes || (attributes = {});
+        this.set(attributes);
+        if(this.isValid()){
+          Backbone.Model.prototype.save.call(this, attributes, options);
+        }
+      },
 
   });
 

@@ -54,7 +54,11 @@ define([
         movieListView.render();
       });
       router.on('route:movie', function (id) {
-        movieDetailView.render(id);
+        if(movieCollection.get(id)){
+          movieDetailView.render(id);
+        }else{
+          router.navigate('#movies',{trigger : true}); 
+        }
       });
       router.on('route:movieNew', function () {
         movieNewView.render();

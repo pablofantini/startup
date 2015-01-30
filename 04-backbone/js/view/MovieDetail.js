@@ -23,15 +23,13 @@ define([
     },
     
     showMovie: function(movie) {
-      this.options.router.navigate('#movie/'+movie.cid,{trigger : true});
+      if(movie.isValid()){
+        this.options.router.navigate('#movie/'+movie.cid,{trigger : true});
+      }
     },
 
     render: function (cid) {
-      if(this.collection.get(cid)){
-        $(this.el).html(movieTemplate({cid: cid, movie: this.collection.get(cid).attributes}));
-      }else{
-        this.options.router.navigate('#movies',{trigger : true});
-      }
+      $(this.el).html(movieTemplate({cid: cid, movie: this.collection.get(cid).attributes}));
     }
   });
 

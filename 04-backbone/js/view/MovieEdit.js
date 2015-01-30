@@ -10,23 +10,31 @@ define([
 
     events: {
       'submit form.edit': 'submit',
-      'reset form.edit': 'reset',
+      'reset form.edit': 'reset'
     },
 
     reset: function () {
       $(this.el).find('.error-group').hide();
     },
+    
+    initialize: function(){
+      this.listenTo(this.collection, 'invalid', this.showError);
+    },
+    
+    showError: function (model) {
+      $(this.el).find('#error').html(model.validationError);
+      $(this.el).find('.error-group').show();
+    },
 
     submit: function (e) {
       e.preventDefault();
-      console.log('Edit Movie');
-      var $form = $(e.currentTarget)
+      var $form = $(e.currentTarget);
       
       var movie = this.collection.get($form.find('#cid').val());
       movie.get('director').firstName = $form.find('#director-first-name').val();
       movie.get('director').lastName = $form.find('#director-last-name').val();
       
-      movie.set({
+      movie.save({
         name: $form.find('#name').val(),
         year: $form.find('#year').val(),
         gener: $form.find('#gener').val(),
@@ -35,13 +43,6 @@ define([
         image: $form.find('#image').val() != '' ? $form.find('#image').val() : movie.defaults.image,
         ranking: $form.find('#ranking').val(),
       });
-
-      if (movie.isValid()) {
-        movie.save();
-      } else {
-        $(this.el).find('#error').html(movie.validationError)
-        $(this.el).find('.error-group').show();
-      }
     },
 
     render: function (cid) {

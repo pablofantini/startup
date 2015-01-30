@@ -12,9 +12,7 @@ define([
     },
 
     render: function () {
-      this.options.router.navigate('#movies',{trigger : true});
       $(this.el).html(movieListTemplate({movies: this.collection.models}));
-      return this;
     }
   });
 

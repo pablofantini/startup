@@ -14,6 +14,16 @@ define([
       'submit form.new': 'submit',
       'reset form.new': 'reset',
     },
+    
+    initialize: function(){
+      this.model = new MovieModel();
+      this.listenTo(this.model, 'invalid', this.showError);
+    },
+    
+    showError: function (model) {
+      $(this.el).find('#error').html(model.validationError);
+      $(this.el).find('.error-group').show();
+    },
 
     reset: function () {
       $(this.el).find('.error-group').hide();
@@ -21,7 +31,6 @@ define([
 
     submit: function (e) {
       e.preventDefault();
-      console.log('New Movie');
       var director = new PeopleModel({
         firstName: $('#director-first-name').val(),
         lastName: $('#director-last-name').val(),
@@ -41,16 +50,8 @@ define([
       if($('#image').val()){
         movieData.image = $('#image').val();
       }
-      
-      var newMovie = new MovieModel(movieData);
-
-      if (newMovie.isValid()) {
-        this.collection.add(newMovie);
-        newMovie.save();
-      } else {
-        $(this.el).find('#error').html(newMovie.validationError)
-        $(this.el).find('.error-group').show();
-      }
+      this.model.save(movieData);
+      this.collection.add(this.model);
     },
 
     render: function () {
