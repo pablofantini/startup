@@ -9,8 +9,8 @@
   <meta name="description" content="training exercises">
   <meta name="keywords" content="MVC - Angular">
   <meta name="author" content="Pablo Fantini">
-  <link href="app/css/style.css" rel="stylesheet" title="Default Style">
-  <link href="app/css/normalize.css" rel="stylesheet" title="Normalize Style">
+  <link href="app/assets/css/style.css" rel="stylesheet" title="Default Style">
+  <link href="app/assets/css/normalize.css" rel="stylesheet" title="Normalize Style">
   
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
@@ -26,10 +26,19 @@
   
   
   <!-- Source -->
-  <script src="app/js/app.js"></script>
-  <script src="app/js/service.js"></script>
-  <script src="app/js/controller.js"></script>
-  <script src="app/js/factory.js"></script>
+  <script src="app/app.js"></script>
+  <script src="app/components/movieList/movieListService.js"></script>
+  <script src="app/components/movieList/movieListController.js"></script>
+  
+  <script src="app/components/movieDetail/movieDetailController.js"></script>
+  <script src="app/components/movieEdit/movieEditController.js"></script>
+  <script src="app/components/movieNew/movieNewController.js"></script>
+  
+  <script src="app/shared/movieForm/movieGenerFactory.js"></script>
+  <script src="app/shared/movie/movieFactory.js"></script>
+  
+  
+  <script src="app/factory.js"></script>
 </head>
 
 <body ng-app="app" ng-view>

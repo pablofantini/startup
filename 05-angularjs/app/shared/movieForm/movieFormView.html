@@ -2,7 +2,7 @@
   <h1 class="page-header" ng-if="movie.name">{{movie.name}} </h1>
   <h1 class="page-header" ng-if="!movie.name"> New Movies </h1>
   <article>
-    <form ng-submit="submit()">
+    <form id="movie-form" name="movie-form" ng-submit="submit()">
       <div class="button-group"></div>
       <div class="error-group alert alert-danger" role="alert">
         <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
