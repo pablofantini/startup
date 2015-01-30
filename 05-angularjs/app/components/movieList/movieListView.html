@@ -9,7 +9,7 @@
   <a ng-repeat="movie in movies" class="movie-list" href="#movie/{{movie.id}}">
     <article>
       <img ng-if="movie.plot" title="{{movie.name}}" ng-src="{{movie.plot}}">
-      <img ng-if="!movie.plot" title="{{movie.name}}" ng-src="app/img/no_image.jpg">
+      <img ng-if="!movie.plot" title="{{movie.name}}" ng-src="app/assets/img/no_image.jpg">
       {{movie.name}}
     </article>
   </a>
