@@ -1,0 +1,39 @@
+<a href="#movies" type="button" class="btn btn-default back-button">
+  <i class="glyphicon glyphicon-chevron-left"></i> Go to list
+</a>
+<article>
+  <div class="action">
+    <i class="glyphicon glyphicon-pencil"></i>
+    <a href="#movie/{{movie.id}}/edit">Edit</a>
+    <span>|</span>
+    <span class="delete" ng-click="delete()">Delete</span>
+  </div>
+  <div class="image">
+    <img ng-if="movie.image" title="{{movie.name}}" ng-src="{{movie.image}}">
+    <img ng-if="!movie.image" title="{{movie.name}}" ng-src="app/assets/img/no_banner.jpg">
+  </div>
+  <div class="plot">
+    <img ng-if="movie.plot" title="{{movie.name}}" ng-src="{{movie.plot}}">
+    <img ng-if="!movie.image" title="{{movie.name}}" ng-src="app/assets/img/no_image.jpg">
+  </div>
+
+  <div class="title margin-text">
+    {{movie.name}}
+  </div>
+  <div class="year margin-text">
+    Year: <strong>{{movie.year}}</strong>
+  </div>
+  <div class="genre margin-text">
+    Gener: <strong>{{movie.gener}}</strong>
+  </div>
+  <div class="raking margin-text">
+    Ranking: <strong>{{movie.ranking}}</strong>
+  </div>
+  <div class="director margin-text">
+    Director: <strong>{{movie.director.firstName}} {{movie.director.lastName}}</strong>
+  </div>
+  <div class="margin-group">
+    <h3 class="page-header">Description</h3>
+    <div class="description">{{movie.description}}</div>
+  </div>
+</article>
